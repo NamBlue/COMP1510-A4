@@ -1,7 +1,6 @@
 package q3;
 
 import java.text.DecimalFormat;
-import static java.io.File.separator;
 import java.awt.Font;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -9,8 +8,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.Toolkit;
 import javax.swing.Timer;
+
+import images.ResourceLoader;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JButton;
@@ -26,13 +27,13 @@ import javax.swing.JButton;
 public class StopWatch extends JFrame {
     
     /** Panel width. */
-    private static final int WIDTH = 815;
+    private static final int WIDTH = 805;
     /** Panel height. */
-    private static final int HEIGHT = 536;
+    private static final int HEIGHT = 516;
     /** Timer for stop-watch. */
     private Timer timer;
     /** Amount of real time it takes to increment the timer. */
-    private final int tDELAY = 100;
+    private final int tDelay = 100;
     /** stores the number of minutes. */
     private int minutes;
     /** stores the number of seconds. */
@@ -44,8 +45,7 @@ public class StopWatch extends JFrame {
     /** Button to reset the stop-watch. */
     private JButton reset;
     /** Background image for the stop-watch. */
-    private Image bg = Toolkit.getDefaultToolkit().createImage("q3" 
-                        + separator + "bg.jpg");
+    private Image bg = ResourceLoader.getImage("bg.jpg");
     /** Purple color for styling components. */
     private final Color purple = new Color(210, 157, 199);
     
@@ -57,6 +57,7 @@ public class StopWatch extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setContentPane(new StopWatchPanel());
         setLayout(new BorderLayout());
+        setResizable(false);
         
         JPanel bottomPanel = new JPanel();
         add(bottomPanel, BorderLayout.SOUTH);
@@ -78,7 +79,7 @@ public class StopWatch extends JFrame {
          */
         private StopWatchPanel() {
             
-            timer = new Timer(tDELAY, new TimeListener());
+            timer = new Timer(tDelay, new TimeListener());
             
             start = new JButton("Start/Stop");
             start.addActionListener(new ButtonListener());

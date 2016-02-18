@@ -20,9 +20,9 @@ import javax.swing.JPanel;
 public class DrawTriangle2 extends JFrame {
     
     /** Panel height. */
-    private static final int HEIGHT = 400;
+    private static final int HEIGHT = 800;
     /** Panel width. */
-    private static final int WIDTH = 400;
+    private static final int WIDTH = 1000;
     /** Center point for triangle. */
     private Point center;
     /** Corner point for triangle on mouse drag. */
